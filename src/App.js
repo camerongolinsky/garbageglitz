@@ -1,27 +1,25 @@
-import React from 'react';
-import './App.css';
-import Nav from './Nav';
-import About from './About';
-import TrashShop from './TrashShop';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Section from "./components/Section";
+import { BrowserRouter as Router } from "react-router-dom";
+import { DataProvider } from "./components/DataProvider";
 
 
 function App() {
-  
-    return (
-      <Router>
-        <div className='App'>
-          <Nav />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/shop" component={TrashShop} />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-    
-  
-// pass data as a prop into ProductList
+  // const [cart, setCart] = useState([]);
+  return (
+    <DataProvider>
+      <div className="App">
+        <Router>
+          {/* <Header cartData={cart} /> */}
+          <Header />
+          <Section
+            // cartData={cart} updateCart={(item) => setCart([...cart, item])}
+            />
+        </Router>
+      </div>
+    </DataProvider>
+  );
+}
+
 export default App;
